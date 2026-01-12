@@ -107,6 +107,7 @@ Pole token zastosowane jest tylko jako zaślepka, w realnej aplikacji powinien b
 W czasie testów poza "dokerem" wiadomości email były wysyłane i w logach były widoczne. Z jakichś powodów w "dokerze" plik laravel.log nie powstaje i nie można obserwować tego zjawiska.
 
 Można to ominąć wykonując następujące czynności:
+
 Wyłączyć dokera:
 ```
 docker compose -f docker-compose.yml --env-file .env -p zadanie_rekrutacyje down
