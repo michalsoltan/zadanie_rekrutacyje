@@ -1,6 +1,7 @@
 # Zadanie rekrutacyjne
 Treść:
-`która ma za zadanie realizować
+```
+która ma za zadanie realizować
 operacje CRUD
 użytkownika (użytkownik powinien mieć co najmniej takie dane jak,
 imię , nazwisko, nr telefonu oraz wiele adresów e-mail
@@ -16,4 +17,5 @@ wymagania:
 - Aplikacja z użyciem framework-a Laravel 12
 
 Proszę napisać API, bez widoków realizujące zadanie z
-użyciem  JSON, REST`
+użyciem  JSON, REST
+```
