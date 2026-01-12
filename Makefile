@@ -7,7 +7,7 @@ default: help
 
 .PHONY: init-project
 init-project: ## Initialize the project
-        cp env.txt .env
+	cp env.txt .env
 	docker compose $(dc_conf) $(project_name) up -d
 	docker compose $(dc_conf) $(project_name) exec app composer require laravel/sanctum:*
 	docker compose $(dc_conf) $(project_name) exec app composer install
