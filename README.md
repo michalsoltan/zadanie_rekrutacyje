@@ -40,10 +40,64 @@ Wymagane komendy i przykłady działania.
 
 Dodanie nowej osoby (wysyła maile na wszystkie adresy)
  ```
- curl -X POST http://localhost:8046/api/persons \
+curl -X POST http://localhost:8046/api/persons \
      -H "Content-Type: application/json" \
      -d '{"token": "asdkllll", "request": "store", "data":{"name":"Michał","surname":"Sołtan","phone":"697604778","emails":["michal.soltan@nessico.pl","michal.soltan@avt.pl"]}}'
+
+curl -X POST http://localhost:8046/api/persons \
+     -H "Content-Type: application/json" \
+     -d '{"token": "asdkllll", "request": "store", "data":{"name":"Katarzyna","surname":"Sołtan","phone":"601334255","emails":["katarzyna.soltan@"]}}'
+
+curl -X POST http://localhost:8046/api/persons \
+     -H "Content-Type: application/json" \
+     -d '{"token": "asdkllll", "request": "store", "data":{"name":"Katarzyna","surname":"Sołtan","phone":"601334255","emails":["katarzyna.soltan@nessico.pl"]}}'
  ```
  Odpowiedź:
  ```
+ {"response":1,"data":{"name":"Micha\u0142","surname":"So\u0142tan","phone":"697604778","emails":"michal.soltan@nessico.pl;michal.soltan@avt.pl","updated_at":"2026-01-12T14:17:49.000000Z","created_at":"2026-01-12T14:17:49.000000Z","id":1}}
+
+ {"response":0,"data":[{"error":"Unproper data"}]}
+
+ {"response":1,"data":{"name":"Katarzyna","surname":"So\u0142tan","phone":"601334255","emails":"katarzyna.soltan@nessico.pl","updated_at":"2026-01-12T14:20:38.000000Z","created_at":"2026-01-12T14:20:38.000000Z","id":2}}
+
  ```
+
+ Lista osób:
+
+ ```
+ curl -X POST http://localhost:8046/api/persons \
+     -H "Content-Type: application/json" \
+     -d '{"token": "asdkllll", "request": "index", "data":{}}'
+```
+Odpowiedź:
+
+```
+{"response":1,"data":[{"id":1,"name":"Micha\u0142","surname":"So\u0142tan"},{"id":2,"name":"Katarzyna","surname":"So\u0142tan"}]}
+```
+
+Update danych:
+
+```
+curl -X POST http://localhost:8046/api/persons \
+     -H "Content-Type: application/json" \
+     -d '{"token": "asdkllll", "request": "update", "data":{"id":1,"name":"Michał Maria","surname":"Sołtan","phone":"697604778","emails":["michal.soltan@nessico.pl","michal.soltan@avt.pl","soltan.michal@gmail.com"]}}'
+```
+
+Odpowiedź:
+
+```
+{"response":1,"data":{"id":1,"name":"Micha\u0142 Maria","surname":"So\u0142tan","phone":"697604778","emails":"michal.soltan@nessico.pl;michal.soltan@avt.pl;soltan.michal@gmail.com","created_at":"2026-01-12T14:17:49.000000Z","updated_at":"2026-01-12T14:25:41.000000Z"}}
+```
+Usuwanie:
+
+```
+curl -X POST http://localhost:8046/api/persons \
+     -H "Content-Type: application/json" \
+     -d '{"token": "asdkllll", "request": "delete", "data":{"id":"2"}}'
+```
+
+Odpowiedź:
+
+```
+{"response":1,"data":[{"info":"Person deleted"}]}
+```
