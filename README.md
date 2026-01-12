@@ -34,7 +34,7 @@ Następnie:
 cd zadanie_rekrutacyje
 make init-project
 ```
-Powyższe powinno zainstalować "doker".
+Powyższe powinno zainstalować "doker", który dostępny jest na porcie 8046.
 
 Wymagane komendy i przykłady działania.
 
@@ -101,3 +101,5 @@ Odpowiedź:
 ```
 {"response":1,"data":[{"info":"Person deleted"}]}
 ```
+"Requesty" zabezpieczone są co do formatu tzn. wymagane są pola: token, request i data.
+Pole token zastosowane jest tylko jako zaślepka, w realnej aplikacji powinien być ustawiany oraz weryfikowany co do poprawności.
