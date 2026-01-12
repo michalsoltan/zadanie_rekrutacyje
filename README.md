@@ -103,3 +103,5 @@ Odpowiedź:
 ```
 "Requesty" zabezpieczone są co do formatu tzn. wymagane są pola: token, request i data.
 Pole token zastosowane jest tylko jako zaślepka, w realnej aplikacji powinien być ustawiany oraz weryfikowany co do poprawności.
+
+W czasie testów poza "dokerem" wiadomości email były wysyłane i w logach były widoczne. Z jakichś powodów w "dokerze" plik laravel.log nie powstaje i nie można obserwować tego zjawiska.
