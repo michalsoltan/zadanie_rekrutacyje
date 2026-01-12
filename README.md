@@ -105,3 +105,17 @@ Odpowiedź:
 Pole token zastosowane jest tylko jako zaślepka, w realnej aplikacji powinien być ustawiany oraz weryfikowany co do poprawności.
 
 W czasie testów poza "dokerem" wiadomości email były wysyłane i w logach były widoczne. Z jakichś powodów w "dokerze" plik laravel.log nie powstaje i nie można obserwować tego zjawiska.
+
+Można to ominąć wykonując następujące czynności:
+Wyłączyć dokera:
+```
+docker compose -f docker-compose.yml --env-file .env -p zadanie_rekrutacyje down
+```
+Przejść do katalogu app i :
+```
+cd app
+npm install && npm run build
+composer run dev
+```
+Wtedy komendy curl trzeba zmodyfikować - port 8046 zamienić na 8000.
+Logi wtedy działają i widać wysyłanie maili.
