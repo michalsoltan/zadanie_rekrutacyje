@@ -1,0 +1,27 @@
+services:
+ # Service PHP-FPM
+  app:
+      build: ./docker/php
+      container_name: php-fpm-app
+      restart: unless-stopped
+      volumes:
+          - ./app:/app
+      networks:
+        - app-network
+      depends_on:
+        - redis
+      ports:
+        - 8000:8000
+  # Service Redis
+  redis:
+      image: redis:alpine
+      container_name: redis
+      restart: unless-stopped
+      networks:
+        - app-network
+      ports:
+        - ${REDIS_PORT}:6379
+
+networks:
+  app-network:
+    driver: bridge
