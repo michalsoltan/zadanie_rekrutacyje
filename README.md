@@ -35,7 +35,7 @@ Następnie:
 cd zadanie_rekrutacyje
 make init-project
 ```
-Powyższe powinno zainstalować "doker", który dostępny jest na porcie 8046.
+Powyższe powinno zainstalować "doker", który dostępny jest na porcie 8000.
 
 Wymagane komendy i przykłady działania.
 
