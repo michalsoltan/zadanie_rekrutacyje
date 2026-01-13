@@ -19,12 +19,12 @@ init-project:
 	docker compose $(dc_conf) $(project_name) exec app php artisan migrate -q
 	docker compose $(dc_conf) $(project_name) exec app php artisan install:api -q
 	docker compose $(dc_conf) $(project_name) exec app chmod -R a+rw ./
-	docker compose $(dc_conf) $(project_name) exec -T app php artisan serve --host=0.0.0.0
+	docker compose $(dc_conf) $(project_name) exec -T app composer run dev&
 down:
 	docker compose $(dc_conf) $(project_name) down
 up:
 	docker compose $(dc_conf) $(project_name) up -d
-	docker compose $(dc_conf) $(project_name) exec -T app php artisan serve --host=0.0.0.0&
+	docker compose $(dc_conf) $(project_name) exec -T app composer run dev&
 
 
 
