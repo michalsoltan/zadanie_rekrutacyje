@@ -17,7 +17,8 @@ wymagania:
 - Aplikacja z użyciem framework-a Laravel 12
 
 Proszę napisać API, bez widoków realizujące zadanie z
-użyciem  JSON, REST
+użyciem
+ JSON, REST
 ```
 ## Wykonanie
 
@@ -40,15 +41,15 @@ Wymagane komendy i przykłady działania.
 
 Dodanie nowej osoby (wysyła maile na wszystkie adresy)
  ```
-curl -X POST http://localhost:8046/api/persons \
+curl -X POST http://localhost:8000/api/persons \
      -H "Content-Type: application/json" \
      -d '{"token": "asdkllll", "request": "store", "data":{"name":"Michał","surname":"Sołtan","phone":"697604778","emails":["michal.soltan@nessico.pl","michal.soltan@avt.pl"]}}'
 
-curl -X POST http://localhost:8046/api/persons \
+curl -X POST http://localhost:8000/api/persons \
      -H "Content-Type: application/json" \
      -d '{"token": "asdkllll", "request": "store", "data":{"name":"Katarzyna","surname":"Sołtan","phone":"601334255","emails":["katarzyna.soltan@"]}}'
 
-curl -X POST http://localhost:8046/api/persons \
+curl -X POST http://localhost:8000/api/persons \
      -H "Content-Type: application/json" \
      -d '{"token": "asdkllll", "request": "store", "data":{"name":"Katarzyna","surname":"Sołtan","phone":"601334255","emails":["katarzyna.soltan@nessico.pl"]}}'
  ```
@@ -65,7 +66,7 @@ curl -X POST http://localhost:8046/api/persons \
  Lista osób:
 
  ```
- curl -X POST http://localhost:8046/api/persons \
+ curl -X POST http://localhost:8000/api/persons \
      -H "Content-Type: application/json" \
      -d '{"token": "asdkllll", "request": "index", "data":{}}'
 ```
@@ -78,7 +79,7 @@ Odpowiedź:
 Update danych:
 
 ```
-curl -X POST http://localhost:8046/api/persons \
+curl -X POST http://localhost:8000/api/persons \
      -H "Content-Type: application/json" \
      -d '{"token": "asdkllll", "request": "update", "data":{"id":1,"name":"Michał Maria","surname":"Sołtan","phone":"697604778","emails":["michal.soltan@nessico.pl","michal.soltan@avt.pl","soltan.michal@gmail.com"]}}'
 ```
@@ -91,7 +92,7 @@ Odpowiedź:
 Usuwanie:
 
 ```
-curl -X POST http://localhost:8046/api/persons \
+curl -X POST http://localhost:8000/api/persons \
      -H "Content-Type: application/json" \
      -d '{"token": "asdkllll", "request": "delete", "data":{"id":"2"}}'
 ```
@@ -104,19 +105,4 @@ Odpowiedź:
 "Requesty" zabezpieczone są co do formatu tzn. wymagane są pola: token, request i data.
 Pole token zastosowane jest tylko jako zaślepka, w realnej aplikacji powinien być ustawiany oraz weryfikowany co do poprawności.
 
-W czasie testów poza "dokerem" wiadomości email były wysyłane i w logach były widoczne. Z jakichś powodów w "dokerze" plik laravel.log nie powstaje i nie można obserwować tego zjawiska.
 
-Można to ominąć wykonując następujące czynności:
-
-Wyłączyć dokera:
-```
-docker compose -f docker-compose.yml --env-file .env -p zadanie_rekrutacyje down
-```
-Przejść do katalogu app i :
-```
-cd app
-npm install && npm run build
-composer run dev
-```
-Wtedy komendy curl trzeba zmodyfikować - port 8046 zamienić na 8000.
-Logi wtedy działają i widać wysyłanie maili.
